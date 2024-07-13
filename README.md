@@ -45,7 +45,7 @@ from model.load_model import load_model, infer
 from PIL import Image
 
 # loading the model
-model_path = '/mnt/bn/yangmin-priv/luoruipu/checkpoints/LLaVA-clip336px-obj-represent-Mistral-1e-5-3072-instruct_llava+shikraCoT75per+GPTQTA+lvis-cot/'
+model_path = 'luoruipu1/Volcano-7b'
 model, preprocessor = load_model(model_path, precision='fp16')
 
 # perform reasoning, activate VoCoT by passing cot=True
@@ -61,15 +61,15 @@ Notice: in the default setting, the output coordinates is the box in the image w
 
 ## Data
 
-For users who want to use VoCoT-Instruct to train their own models, we provide a integrated json file, [VoCoT-Instruct-80K]() following the conversation format of LLaVA (Notice that all coordinates are for the images that are expanded to square).
+For users who want to use VoCoT-Instruct to train their own models, we provide a integrated json file, [VoCoT-Instruct-80K](https://huggingface.co/datasets/luoruipu1/VoCoT/blob/main/VoCoT-80K_integrated.json) following the conversation format of LLaVA (Notice that all coordinates are for the images that are expanded to square).
 
-If you would like to follow the training of VolCano in this paper, please use the separate json files in the [raw_data]() for efficient dataset management.
+If you would like to follow the training of VolCano in this paper, please use the separate json files in the [raw_data](https://huggingface.co/datasets/luoruipu1/VoCoT/blob/main/raw_data/) for efficient dataset management.
 
 For the corresponding images, please visit [GQA](https://cs.stanford.edu/people/dorarad/gqa/about.html), [COCO](https://cocodataset.org/), and [LVIS](https://www.lvisdataset.org/) to download the images.
 
 ## Model Weights
 
-The VolCano model is based on Mistral-Instruct-v0.2-7B and CLIP-14/L, the connection the trained weights are released [here](). The architecture is illustrated below and details are included in our paper.
+The VolCano model is based on Mistral-Instruct-v0.2-7B and CLIP-14/L, the connection the trained weights are released [here](https://huggingface.co/luoruipu1/Volcano-7b/tree/main). The architecture is illustrated below and details are included in our paper.
 
 <p align="center">
     <img src="figs/model_arch.png" width="70%"><br>
@@ -84,7 +84,7 @@ In each stage, you prepare the data and pre-trained checkpoints with the help of
 
 The datasets are managed with yaml files in [config/datasets](./config/datasets/). In each yaml, you need to make sure all the paths with "PATH/TO" in them are correctly prepared. 
 
-For datasets that are either introduced, modified, or filtered in this paper, e.g. VoCoT-Instruct, the subset of GRIT and MMC4, we provide the meta data in [here](). 
+For datasets that are either introduced, modified, or filtered in this paper, e.g. VoCoT-Instruct, the subset of GRIT and MMC4, we provide the meta data in [here](https://huggingface.co/datasets/luoruipu1/VoCoT/blob/main/raw_data/pretrain/). 
 
 For public datasets like RefCOCO, LLaVA, and ALLaVA, please refer to the corresponding websites to obtain the data. 
 If it is not clear where to obtain the dataset, feel free to contact us.

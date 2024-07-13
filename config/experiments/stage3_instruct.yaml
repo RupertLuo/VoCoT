@@ -1,0 +1,65 @@
+project_name: volcano
+run_name: volcano_stage3
+# Whether to make the system prompt a mask in the label, and others do not mask
+only_mask_system: False
+# system prompt style
+conv_mode: v1
+# wether lora
+lora_enable: False # no lora in the stage-1
+# wether multimodal
+is_multimodal: True
+
+freeze_backbone: False
+
+# weight path
+model_path: PATH/TO/STAGE2_CKPT
+vision_encoder: openai/clip-vit-large-patch14-336
+vision_encoder_path: openai/clip-vit-large-patch14-336
+skip_vision_encoder_load: False
+front_projector_type: mlp2x_gelu
+num_query_token: 32
+avoid_generator: True # do not use generator in this stage
+output_dir: PATH/TO/STAGE3_CKPT
+behind_projector: linear
+flash_attn: True
+# dataset config
+data_config_path: config/datasets/stage3_instruct.yaml
+expand_to_square: True
+remove_unused_columns: False
+regression_weight: 1.0
+tokenizer_model_max_length: 3072
+model_max_length: 3072
+extend_loc_vocabulary: False
+use_mistral: True
+
+num_train_epochs: 1
+per_device_train_batch_size: 16
+save_strategy: 'steps'
+lora_save_strategy: steps # if do lora training, turn on this button, to only save lora weight. support ['steps','epochs','no']
+save_steps: 3000
+learning_rate: 1e-5
+gradient_checkpointing: True
+# wether do fast epoch
+fast_epoch: False
+
+# whether to compute diffusion loss
+compute_diffusion_loss: False
+
+bf16: True
+fp16: False
+tf32: False
+per_device_eval_batch_size: 1
+gradient_accumulation_steps: 1
+evaluation_strategy: "no"
+save_total_limit: 3
+weight_decay: 0.
+warmup_ratio: 0.0
+lr_scheduler_type: cosine
+logging_steps: 1 
+model_max_length: 3072 
+adam_beta1: 0.9 
+adam_beta2: 0.95 
+deepspeed: config/deepspeed/config_zero2.json
+dataloader_num_workers: 4
+# report_to: wandb
+is_training: True

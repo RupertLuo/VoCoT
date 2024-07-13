@@ -16,9 +16,9 @@ from transformers.modeling_outputs import CausalLMOutputWithPast
 from transformers.utils import ModelOutput
 
 from ..vision_encoder.builder import build_vision_encoder
-from ..vision_generator.builder import build_vision_generator
+# `````````from ..vision_generator.builder import build_vision_generator
 from ..front_projector.builder import build_front_projector
-from ..behind_projector.builder import build_behind_projector
+# from ..behind_projector.builder import build_behind_projector
 from .volcano_base import VolCanoMetaForCausalLM
 from transformers import GenerationMixin
 

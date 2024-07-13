@@ -15,9 +15,9 @@ from transformers.modeling_outputs import CausalLMOutputWithPast
 from transformers.utils import ModelOutput
 
 from ..vision_encoder.builder import build_vision_encoder
-from ..vision_generator.builder import build_vision_generator
+# from ..vision_generator.builder import build_vision_generator
 from ..front_projector.builder import build_front_projector
-from ..behind_projector.builder import build_behind_projector
+# from ..behind_projector.builder import build_behind_projector
 from transformers import GenerationMixin
 
 from PIL import Image
@@ -243,26 +243,26 @@ class VolCanoLlamaForCausalLM(LlamaForCausalLM):
                 self.front_mm_projector = build_front_projector(config, delay_load=False)
             print('End Create Front Projector')
 
-        if hasattr(config, "vision_generator"):
-            if (not getattr(config, 'avoid_generator', False)):
-                print('Create Vision Generator')
-                self.vision_generator = build_vision_generator(config)
-                self.image_condition = getattr(config, 'vision_generator_type', 'SD') == 'P2P_SD'
-                self.sd_add_args = getattr(config, 'vision_generator_type', 'SD') == 'Emu2_SD'
-                sd_hidden_size = self.vision_generator.unet.config.cross_attention_dim
-                self.noise_scheduler = self.vision_generator.scheduler
-                assert sd_hidden_size == config.mm_hidden_size, "the emu-2-based model must follow autoencoder structure!"
-                config.sd_hidden_size = sd_hidden_size
-                # self.fc = nn.Linear(config.hidden_size, sd_hidden_size)
-                print('End Behind Generator')
-            else:
-                config.sd_hidden_size = config.mm_hidden_size
-                self.vision_generator = None
+        # if hasattr(config, "vision_generator"):
+        #     if (not getattr(config, 'avoid_generator', False)):
+        #         print('Create Vision Generator')
+        #         self.vision_generator = build_vision_generator(config)
+        #         self.image_condition = getattr(config, 'vision_generator_type', 'SD') == 'P2P_SD'
+        #         self.sd_add_args = getattr(config, 'vision_generator_type', 'SD') == 'Emu2_SD'
+        #         sd_hidden_size = self.vision_generator.unet.config.cross_attention_dim
+        #         self.noise_scheduler = self.vision_generator.scheduler
+        #         assert sd_hidden_size == config.mm_hidden_size, "the emu-2-based model must follow autoencoder structure!"
+        #         config.sd_hidden_size = sd_hidden_size
+        #         # self.fc = nn.Linear(config.hidden_size, sd_hidden_size)
+        #         print('End Behind Generator')
+        #     else:
+        #         config.sd_hidden_size = config.mm_hidden_size
+        #         self.vision_generator = None
 
-        if hasattr(config, "behind_projector"):
-            print('Create Behind Projector')
-            self.behind_projector = build_behind_projector(config, vision_generator = self.vision_generator)
-            print('End Behind Projector')
+        # if hasattr(config, "behind_projector"):
+        #     print('Create Behind Projector')
+        #     self.behind_projector = build_behind_projector(config, vision_generator = self.vision_generator)
+        #     print('End Behind Projector')
 
         if hasattr(config, "vision_generator"):
             self.diffusion_loss = getattr(config, "compute_diffusion_loss", False)

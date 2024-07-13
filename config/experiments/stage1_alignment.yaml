@@ -12,7 +12,7 @@ is_multimodal: True
 freeze_backbone: True
 
 # weight path
-model_path: /PATH/TO/Mistral-7B-Instruct-v0.2/
+model_path: mistralai/Mistral-7B-Instruct-v0.2
 vision_encoder: openai/clip-vit-large-patch14-336
 vision_encoder_path: openai/clip-vit-large-patch14-336
 skip_vision_encoder_load: False
