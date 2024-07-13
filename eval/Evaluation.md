@@ -3,7 +3,7 @@
 ## Data Prepare
 For evaluation, we also utilize the yaml file to manage the evaluation datasets.
 
-For CLEVR and CLEVR-ref, we provide the constructed evaluation meta data in [here](). For other dataets, please refer to the original website for the data.
+For CLEVR and CLEVR-ref, we provide the constructed evaluation meta data in [here](https://huggingface.co/datasets/luoruipu1/VoCoT/tree/main/eval). For other dataets, please refer to the original website for the data.
 
 With the prepared datasets, please set the correct paths in those [config files](../config/datasets/eval/).
 
