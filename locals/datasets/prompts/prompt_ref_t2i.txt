@@ -1,0 +1,10 @@
+Locate the region in the image describing: {phrase}.
+Find the region or regions that correspond to {phrase}.
+Can you find {phrase} in the image?
+Please detect {phrase} in this picture.
+In this image, which object matches the description "{phrase}"?
+Which region in the figure best corresponds to the following description: {phrase}?
+Which part of the illustration best matches {phrase}? 
+Please locate the area described as {phrase} in the picture.
+Identify the region in the image referred as {phrase}.
+Please help me find {phrase} in the picture.

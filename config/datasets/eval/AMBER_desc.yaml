@@ -1,0 +1,6 @@
+- mmvet:
+  target: locals.datasets.eval.short_qa.AMBERDataset
+  params:
+    path: PATH/TO/AMBER/AMBER/data/query/query_generative.json
+    base_path: PATH/TO/AMBER/image
+    describe: True

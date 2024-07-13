@@ -1,0 +1,5 @@
+- mmvet:
+  target: locals.datasets.eval.qa.SEEDOptionDataset
+  params:
+    path: PATH/TO/SEED-Bench/SEED-Bench.json
+    image_dir: PATH/TO/SEED-Bench/SEED-Bench-image

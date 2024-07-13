@@ -1,0 +1,5 @@
+- mmvet:
+  target: locals.datasets.eval.qa.WinoTextDataset
+  params:
+    option_in_context: False
+    

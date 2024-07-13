@@ -1,0 +1,55 @@
+datasets:
+  target: locals.datasets.DataModuleFromConfig
+  params:
+    batch_size: 64
+    num_workers: 4
+    wrap: True
+    train:
+      - allava_laion:
+        target: locals.datasets.multimodal_tasks.llava_academic.ALLaVACaptionDataset
+        params:
+          path: PATH/TO/allava_laion/ALLaVA-Caption-LAION-4V.json
+          image_folder: PATH/TO/ALLaVA/images
+          raw_image: True
+          output_mode: text
+          shuffle: False
+          expand2square: True
+      - allava_vflan:
+        target: locals.datasets.multimodal_tasks.llava_academic.ALLaVACaptionDataset
+        params:
+          path: PATH/TO/allava_vflan/ALLaVA-Caption-VFLAN-4V.json
+          image_folder: PATH/TO/ALLaVA/images
+          raw_image: True
+          output_mode: text
+          shuffle: False
+          expand2square: True
+      - mmc4:
+        target: locals.datasets.image_caption.mmc4.FilteredMMC4Dataset
+        params:
+          path: PATH/TO/filter_mmc4_meta_with_img_abs_path_890k.jsonl
+          avoid_image_gen: True
+          expand2square: True
+      - grit:
+        target: locals.datasets.image_caption.grit.GriTDataset
+        params:
+          path: PATH/TO/clip_filtered_756K_grit.json
+          image_folder: PATH/TO/GRIT/images/
+          raw_image: True
+          output_mode: text
+          shuffle: True
+          phrase_key: noun_chunks
+          avoid_image_gen: True
+          phrase_format: 'text'
+          phrase_prec: 3
+          object_format: 'representation'
+          expand2square: True
+      - flickr30kentities:
+        target: locals.datasets.image_caption.flicker30k.FlickrDataset
+        params:
+          path: PATH/TO/CWB_flickr30k_train.jsonl
+          image_folder: PATH/TO/Flicker30K/flickr30k-images/
+          avoid_image_gen: True
+          phrase_format: 'text'
+          phrase_prec: 3
+          object_format: 'representation'
+          expand2square: True

@@ -1,0 +1,8 @@
+generate an image with caption:
+can you give me the image with caption:
+help me to generate this image:
+generate image with according to caption:
+according to caption, generate image:
+an image with caption:
+can you visualize this caption:
+Please generate an image corresponding to my description:

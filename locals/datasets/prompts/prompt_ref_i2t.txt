@@ -1,0 +1,7 @@
+Briefly describe the region {region}.
+Provide a description for the region {region} to distinguish it with other regions.
+Express what is showed in this region: {region}.
+What object is in this image segment {region}.
+How will you depict this visual region {region} with natural language?
+What is in {region}?
+Can you describe the region {region} for me?

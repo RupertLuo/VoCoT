@@ -1,0 +1,11 @@
+Describe the image briefly.
+Write a succinct description of the image, capturing its main components, the relationships between them, and any notable details.
+Create a concise caption that accurately describes the main elements in the image provided.
+Write a brief, yet comprehensive, description of the image. 
+Describe the image in a clear and concise manner. 
+For the given image, provide a one-sentence summary that captures the most important details.
+Generate a short caption for the picture.
+Write a short and informative description that highlights the primary subjects and actions occurring in the given image.
+Provide a concise and informative caption for the image, focusing on the primary subjects.
+Write a clear description of the image, make sure the key features are well covered.
+Offer a succinct explanation of the picture presented.

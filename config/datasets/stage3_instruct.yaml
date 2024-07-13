@@ -1,0 +1,131 @@
+datasets:
+  target: locals.datasets.DataModuleFromConfig
+  params:
+    batch_size: 64
+    num_workers: 4
+    wrap: True
+    train:
+      - llava_academic:
+        target: locals.datasets.multimodal_tasks.llava_academic.LlavaAcademicDataset
+        params:
+          path: PATH/TO/llava_v1_5_mix665k_norefcoco.json # removing refcoco from llava 665K
+          image_folder: PATH/TO/LLaVA_images
+          raw_image: True
+          output_mode: conversation
+          avoid_image_gen: True
+          min_size: 50
+          phrase_format: 'text'
+          phrase_prec: 3
+          expand2square: True
+          object_format: 'representation'
+      - refcoco:
+        target: locals.datasets.multimodal_tasks.refcoco.RefCOCODataset
+        params:
+          path: PATH/TO/Refcoco
+          dataset_name: refcoco
+          split: train
+          image_path: PATH/TO/COCO2015/images/
+          task_mode: both
+          avoid_image_gen: True
+          phrase_format: 'text'
+          phrase_prec: 3
+          expand2square: True
+          object_format: 'representation'
+      - refcoco+:
+        target: locals.datasets.multimodal_tasks.refcoco.RefCOCODataset
+        params:
+          path: PATH/TO/Refcoco
+          dataset_name: refcoco+
+          split: train
+          image_path: PATH/TO/COCO2015/images/
+          task_mode: both
+          avoid_image_gen: True
+          phrase_format: 'text'
+          phrase_prec: 3
+          expand2square: True
+          object_format: 'representation'
+      - refcocog:
+        target: locals.datasets.multimodal_tasks.refcoco.RefCOCODataset
+        params:
+          path: PATH/TO/Refcoco
+          dataset_name: refcocog
+          split: train
+          split_by: umd
+          image_path: PATH/TO/COCO2015/images/
+          task_mode: both
+          avoid_image_gen: True
+          phrase_format: 'text'
+          phrase_prec: 3
+          expand2square: True
+          object_format: 'representation'
+      - grefcoco:
+        target: locals.datasets.multimodal_tasks.refcoco.GRefCOCODataset
+        params:
+          path: PATH/TO/Refcoco
+          split: train
+          image_path: PATH/TO/COCO2015/images/
+          task_mode: both
+          avoid_image_gen: True
+          phrase_format: 'text'
+          phrase_prec: 3
+          expand2square: True
+          object_format: 'representation'
+      - shikra_cot_gen:
+        target: locals.datasets.multimodal_tasks.cot_qa.CoTQADataset
+        params:
+          path: PATH/TO/Shikra/GPT4GEN_BoxCoT_train.jsonl   # See Shikra data
+          image_path: PATH/TO/Flicker30K/flickr30k-images/
+          avoid_image_gen: True
+          phrase_format: 'text'
+          phrase_prec: 3
+          expand2square: True
+          object_format: 'representation'
+          further_instruct: True
+      - shikra_rd:
+        target: locals.datasets.multimodal_tasks.cot_qa.CoTQADataset
+        params:
+          path: PATH/TO/Shikra/GPT4GEN_RD_BoxCoT_train.jsonl  # See Shikra data
+          image_path: PATH/TO/Flicker30K/flickr30k-images/
+          avoid_image_gen: True
+          phrase_format: 'text'
+          phrase_prec: 3
+          expand2square: True
+          object_format: 'representation'
+          further_instruct: False
+      - cot_gqa:
+        target: locals.datasets.multimodal_tasks.cot_qa.GQACoTDataset
+        params:
+          path: PATH/TO/raw_data/type1_gqa_raw.jsonl
+          image_path: PATH/TO/GQA/images
+          avoid_image_gen: True
+          phrase_format: 'text'
+          phrase_prec: 3
+          expand2square: True
+          object_format: 'representation'
+          further_instruct: True
+          sample_weight: 0.75
+      - llava_QA2T:
+        target: locals.datasets.multimodal_tasks.llava_academic.LlavaQA2TDataset
+        params:
+          path: PATH/TO/raw_data/type2_iqa2t_raw.json
+          raw_image: True
+          output_mode: conversation
+          avoid_image_gen: True
+          min_size: 50
+          phrase_format: 'text'
+          phrase_prec: 3
+          expand2square: True
+          object_format: 'representation'
+      - lvis_I2QTA:
+        target: locals.datasets.multimodal_tasks.llava_academic.LlavaI2QTADataset
+        params:
+          path: PATH/TO/raw_data/type3_i2qta_raw.json
+          raw_image: True
+          output_mode: conversation
+          avoid_image_gen: True
+          min_size: 50
+          phrase_format: 'text'
+          phrase_prec: 3
+          expand2square: True
+          object_format: 'representation'
+          block_invalid: True

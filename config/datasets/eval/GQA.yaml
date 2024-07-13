@@ -1,0 +1,5 @@
+- gqa:
+  target: locals.datasets.eval.short_qa.GQADataset
+  params:
+    path: PATH/TO/GQA/testdev_balanced_questions.json
+    base_path: PATH/TO/GQA/images/

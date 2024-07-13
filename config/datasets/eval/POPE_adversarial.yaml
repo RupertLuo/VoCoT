@@ -1,0 +1,5 @@
+- pope_adv:
+  target: locals.datasets.eval.short_qa.POPEDataset
+  params:
+    path: PATH/TO/coco_pope_adversarial.jsonl 
+    base_path: PATH/TO/COCO2015/images/

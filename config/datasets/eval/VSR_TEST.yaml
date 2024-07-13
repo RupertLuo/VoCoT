@@ -1,0 +1,5 @@
+- mme:
+  target: locals.datasets.eval.short_qa.VSRDataset
+  params:
+    path: PATH/TO/VSR/zeroshot/test.jsonl
+    base_path: PATH/TO/COCO2017/

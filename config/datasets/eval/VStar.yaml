@@ -1,0 +1,5 @@
+- mmvet:
+  target: locals.datasets.eval.qa.VStarDataset
+  params:
+    path: PATH/TO/VStar/meta.json
+    image_dir: PATH/TO/VStar/vstar_hub_dl
