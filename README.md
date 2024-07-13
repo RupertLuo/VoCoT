@@ -2,7 +2,6 @@
 <p align="center">
   <img src="https://github.com/user-attachments/assets/e7378e25-16d6-40b9-87ff-44f1550c886e" width="50%">
 </p>  
-![volcano](https://github.com/user-attachments/assets/e7378e25-16d6-40b9-87ff-44f1550c886e)
 
 Exploring visually CoT reasoning in large multi-modal models with VoCoT!
 
