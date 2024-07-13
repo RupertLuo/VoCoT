@@ -1,0 +1,5 @@
+Help me to generate this image: {desc}
+Generate image according to the following information: {desc}
+Based on the provided description and corresponding images of objects: {desc}, generate a complete image.
+Create an image of {desc}
+I will provide you with descriptions of the images and images of the objects. help me reconstruct the entire picture: {desc}

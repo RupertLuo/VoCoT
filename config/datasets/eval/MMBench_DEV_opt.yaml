@@ -1,0 +1,5 @@
+- mmvet:
+  target: locals.datasets.eval.qa.MMBenchOptDataset
+  params:
+    path: PATH/TO/mmbench/MMBench_DEV_EN_legacy.tsv
+    single_pred_prompt: False

@@ -1,0 +1,5 @@
+- refcoco:
+  target: locals.datasets.multimodal_tasks.refcoco.ClevrRefDataset
+  params:
+    path: PATH/TO/clevr_ref/meta_1item_2k.json
+    image_path: PATH/TO/clevr_ref+_1.0/images/val

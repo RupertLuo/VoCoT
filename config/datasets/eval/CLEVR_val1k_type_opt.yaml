@@ -1,0 +1,5 @@
+- mmvet:
+  target: locals.datasets.eval.qa.CLEVRDataset
+  params:
+    path: PATH/TO/CLEVR/CLEVR_v1.0/clevr_val_4choices_1k_per_type.json
+    image_dir: PATH/TO/CLEVR_v1.0/images/val/

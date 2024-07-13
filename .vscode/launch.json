@@ -1,0 +1,222 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": false
+        },
+        {
+            "name": "finetune",
+            "type": "python",
+            "request": "launch",
+            "program": "/usr/local/lib/python3.9/dist-packages/torch/distributed/run.py",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "args": [
+                "--nproc_per_node", "8",
+                "--nnodes", "1",
+                "--node_rank", "0", 
+                "--master_addr", "fdbd:dc61:a:89::14",
+                "--master_port", "11135",
+                "/mnt/bn/yangmin-priv/luoruipu/code/Edit-GPT4/train_emu_mix.py",
+                "--conf","config/experiments/debug/ablation/instruct_tuning_llava+shikraCoT+lvis-cot_mistral_img.yaml"
+            ]
+        },
+        {
+            "name": "finetune",
+            "type": "python",
+            "request": "launch",
+            "program": "/usr/local/lib/python3.9/dist-packages/torch/distributed/run.py",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "args": [
+                "--nproc_per_node", "8",
+                "--nnodes", "1",
+                "--node_rank", "0", 
+                "--master_addr", "fdbd:dc61:1a:451::40",
+                "--master_port", "11134",
+                "/mnt/bn/yangmin-priv/luoruipu/code/Edit-GPT4/train_emu_stage2.py",
+                "--conf","/mnt/bn/yangmin-priv/luoruipu/code/Edit-GPT4/config/experiments/edit_gpt_emu/instruct_tuning.yaml"
+            ]
+        },
+        {
+            "name": "evaluate",
+            "type": "python",
+            "request": "launch",
+            "program": "/usr/local/lib/python3.9/dist-packages/torch/distributed/run.py",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "args": [
+                "--nproc_per_node", "1",
+                "--nnodes", "1",
+                "--node_rank", "0", 
+                "--master_addr", "fdbd:dc61:1a:457::24",
+                "--master_port", "11134",
+                "/mnt/bn/yangmin-priv/luoruipu/code/VoCoT/eval/evaluate_benchmark.py",
+                "--model_path", "/mnt/bn/yangmin-priv/luoruipu/checkpoints/LLaVA-clip336px-obj-represent-instruct-2e-5/" ,
+                "--eval_data", "config/datasets/eval/refcoco_testA.yaml", "--output_dir", "output/refer_debug/llava_instruct_simplified_rep/",
+                "--avoid_image_gen",  "--temperature", "0",  "--precision", "bf16"
+            ]
+        },
+        {
+            "name": "evaluate_cot",
+            "type": "python",
+            "request": "launch",
+            "program": "/usr/local/lib/python3.9/dist-packages/torch/distributed/run.py",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "args": [
+                "--nproc_per_node", "1",
+                "--nnodes", "1",
+                "--node_rank", "0", 
+                "--master_addr", "fdbd:dc61:7:69::41",
+                "--master_port", "11134",
+                "/mnt/bn/yangmin-priv/luoruipu/code/Edit-GPT4/eval/evaluate_benchmark.py",
+                "--model_path", "/mnt/bn/yangmin-priv/luoruipu/checkpoints/LLaVA-clip336px-obj-coor-Mistral-1e-5-3072-instruct_llava+shikraCoT75per+GPTQTA+lvis-cot/" ,
+                "--eval_data", "config/datasets/eval/VSR_TEST.yaml", "--output_dir", "output/vsr/llava_mistral_instruct_simplified_coor_llava_shikraCoT75/cot",
+                "--avoid_image_gen",  "--temperature", "0",  "--precision", "fp16", "--cot", "--expand2square", "--max_new_tokens", "1024", "--use_mistral", "--no_bind"
+            ]
+        },
+        {
+            "name": "evaluate_logit",
+            "type": "python",
+            "request": "launch",
+            "program": "/usr/local/lib/python3.9/dist-packages/torch/distributed/run.py",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "args": [
+                "--nproc_per_node", "1",
+                "--nnodes", "1",
+                "--node_rank", "0", 
+                "--master_addr", "fdbd:dc61:a:89::34",
+                "--master_port", "11134",
+                "/mnt/bn/yangmin-priv/luoruipu/code/Edit-GPT4/eval/evaluate_benchmark.py",
+                "--model_path", "/mnt/bn/yangmin-priv/luoruipu/checkpoints/LLaVA-clip336px-obj-image-Mistral-1e-5-3072-instruct_llava+shikraCoT75per+GPTQTA+lvis-cot/" ,
+                "--eval_data", "config/datasets/eval/POPE_adversarial.yaml", "--output_dir", "output/pope/llava_mistral_instruct_simplified_image_llava_shikraCoT75+GPT-/cot", "--use_mistral", "--sub_image",
+                "--avoid_image_gen",  "--temperature", "0",  "--precision", "fp16", "--expand2square", "--cot", "--max_new_tokens", "1024"
+            ]
+        },
+        {
+            "name": "evaluate_llava_logit",
+            "type": "python",
+            "request": "launch",
+            "program": "/usr/local/lib/python3.9/dist-packages/torch/distributed/run.py",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "args": [
+                "--nproc_per_node", "8",
+                "--nnodes", "1",
+                "--node_rank", "0", 
+                "--master_addr", "fdbd:dc61:10:604::200",
+                "--master_port", "11134",
+                "/mnt/bn/yangmin-priv/luoruipu/code/Edit-GPT4/eval/evaluate_benchmark_llava.py",
+                "--model_path", "liuhaotian/llava-v1.6-mistral-7b",
+                "--eval_data", "config/datasets/eval/POPE_adversarial.yaml", "--output_dir", "output/pope/llava_16_mistral/",
+                "--avoid_image_gen",  "--temperature", "0",  "--precision", "fp16", "--llava16", "--conv_template", "mistral"
+            ]
+        },
+        {
+            "name": "evaluate_qwenvl_logit",
+            "type": "python",
+            "request": "launch",
+            "program": "/usr/local/lib/python3.9/dist-packages/torch/distributed/run.py",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "args": [
+                "--nproc_per_node", "8",
+                "--nnodes", "1",
+                "--node_rank", "0", 
+                "--master_addr", "fdbd:dc61:10:604::200",
+                "--master_port", "11134",
+                "/mnt/bn/yangmin-priv/luoruipu/code/Edit-GPT4/eval/evaluate_benchmark_baseline.py",
+                "--model_name", "qwenvlchat", "--model_path", "Qwen/Qwen-VL-Chat",
+                "--eval_data", "config/datasets/eval/Wino.yaml", "--output_dir", "output/seed/qwenvlchat/",
+                "--avoid_image_gen",  "--temperature", "0",  "--precision", "fp16", "--evaluate_loss"
+            ]
+        },
+        {
+            "name": "evaluate_minigptv2_logit",
+            "type": "python",
+            "request": "launch",
+            "program": "/usr/local/lib/python3.9/dist-packages/torch/distributed/run.py",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "args": [
+                "--nproc_per_node", "8",
+                "--nnodes", "1",
+                "--node_rank", "0", 
+                "--master_addr", "fdbd:dc61:10:604::200",
+                "--master_port", "11134",
+                "/mnt/bn/yangmin-priv/luoruipu/code/Edit-GPT4/eval/evaluate_benchmark_baseline.py",
+                "--model_name", "minigptv2", "--model_path", "config/models/minigpt_v2.yaml",
+                "--eval_data", "config/datasets/eval/Wino.yaml", "--output_dir", "output/wino/minigptv2/",
+                "--avoid_image_gen",  "--temperature", "0",  "--precision", "fp16", "--evaluate_loss"
+            ]
+        },
+        {
+            "name": "evaluate_mplugowl2_logit",
+            "type": "python",
+            "request": "launch",
+            "program": "/usr/local/lib/python3.9/dist-packages/torch/distributed/run.py",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "args": [
+                "--nproc_per_node", "8",
+                "--nnodes", "1",
+                "--node_rank", "0", 
+                "--master_addr", "fdbd:dc61:10:604::200",
+                "--master_port", "11134",
+                "/mnt/bn/yangmin-priv/luoruipu/code/Edit-GPT4/eval/evaluate_benchmark_baseline.py",
+                "--model_name", "mplug_owl2", "--model_path", "MAGAer13/mplug-owl2-llama2-7b",
+                "--eval_data", "config/datasets/eval/EmbSpa_test_opt_context.yaml", "--output_dir", "output/mp3d/mplug_owl2/",
+                "--avoid_image_gen",  "--temperature", "0",  "--precision", "fp16", "--evaluate_loss"
+            ]
+        },
+        {
+            "name": "evaluate_deepseek_logit",
+            "type": "python",
+            "request": "launch",
+            "program": "/usr/local/lib/python3.9/dist-packages/torch/distributed/run.py",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "args": [
+                "--nproc_per_node", "8",
+                "--nnodes", "1",
+                "--node_rank", "0", 
+                "--master_addr", "fdbd:dc61:a:89::14",
+                "--master_port", "11134",
+                "/mnt/bn/yangmin-priv/luoruipu/code/Edit-GPT4/eval/evaluate_benchmark_baseline.py",
+                "--model_name", "deepseek", "--model_path", "deepseek-ai/deepseek-vl-7b-chat",
+                "--eval_data", "config/datasets/eval/clevr_ref.yaml", "--output_dir", "output/refcoco/deepseek/",
+                "--avoid_image_gen",  "--temperature", "0",  "--precision", "fp16"
+            ]
+        },
+        {
+            "name": "evaluate_monkey_logit",
+            "type": "python",
+            "request": "launch",
+            "program": "/usr/local/lib/python3.9/dist-packages/torch/distributed/run.py",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "args": [
+                "--nproc_per_node", "8",
+                "--nnodes", "1",
+                "--node_rank", "0", 
+                "--master_addr", "fdbd:dc61:a:89::14",
+                "--master_port", "11134",
+                "/mnt/bn/yangmin-priv/luoruipu/code/Edit-GPT4/eval/evaluate_benchmark_baseline.py",
+                "--model_name", "monkey", "--model_path", "/mnt/bn/luoruipu-disk/weight_pretrained/monkey/monkey/",
+                "--eval_data", "config/datasets/eval/MMBench_DEV_opt_context.yaml", "--output_dir", "output/mmbench/monkey/",
+                "--avoid_image_gen",  "--temperature", "0",  "--precision", "fp16"
+            ]
+        }
+    ]
+}

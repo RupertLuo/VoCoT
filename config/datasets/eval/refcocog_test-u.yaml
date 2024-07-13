@@ -1,0 +1,9 @@
+- refcoco:
+  target: locals.datasets.multimodal_tasks.refcoco.RefCOCOEvalDataset
+  params:
+    path: PATH/TO/Refcoco
+    dataset_name: refcocog
+    split: test
+    split_by: umd
+    image_path: PATH/TO/COCO2015/images/
+    task_mode: t2i

@@ -1,0 +1,5 @@
+- mmvet:
+  target: locals.datasets.eval.qa.EmbSpatialDataset
+  params:
+    path: PATH/TO/embspatial_bench_v1.json
+    image_dir: PATH/TO/emb_spatial/

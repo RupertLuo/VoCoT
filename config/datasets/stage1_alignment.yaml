@@ -1,0 +1,15 @@
+datasets:
+  target: locals.datasets.DataModuleFromConfig
+  params:
+    batch_size: 64
+    num_workers: 4
+    wrap: True
+    train:
+      - llava_pretrain_i2t:
+        target: locals.datasets.image_caption.cc3m.FilteredCC3MI2TDataset
+        params:
+          path: /PATH/TO/LLaVA-Pretrain/blip_laion_cc_sbu_558k.json
+          image_folder: /PATH/TO/LLaVA-Pretrain/images
+          raw_image: True
+          output_mode: text
+          shuffle: False
