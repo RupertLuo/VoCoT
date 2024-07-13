@@ -63,7 +63,7 @@ Notice: in the default setting, the output coordinates is the box in the image w
 
 For users who want to use VoCoT-Instruct to train their own models, we provide a integrated json file, [VoCoT-Instruct-80K](https://huggingface.co/datasets/luoruipu1/VoCoT/blob/main/VoCoT-80K_integrated.json) following the conversation format of LLaVA (Notice that all coordinates are for the images that are expanded to square).
 
-If you would like to follow the training of VolCano in this paper, please use the separate json files in the [raw_data](https://huggingface.co/datasets/luoruipu1/VoCoT/blob/main/raw_data/) for efficient dataset management.
+If you would like to follow the training of VolCano in this paper, please use the separate json files in the [raw_data](https://huggingface.co/datasets/luoruipu1/VoCoT/tree/main/raw_data) for efficient dataset management.
 
 For the corresponding images, please visit [GQA](https://cs.stanford.edu/people/dorarad/gqa/about.html), [COCO](https://cocodataset.org/), and [LVIS](https://www.lvisdataset.org/) to download the images.
 
@@ -84,7 +84,7 @@ In each stage, you prepare the data and pre-trained checkpoints with the help of
 
 The datasets are managed with yaml files in [config/datasets](./config/datasets/). In each yaml, you need to make sure all the paths with "PATH/TO" in them are correctly prepared. 
 
-For datasets that are either introduced, modified, or filtered in this paper, e.g. VoCoT-Instruct, the subset of GRIT and MMC4, we provide the meta data in [here](https://huggingface.co/datasets/luoruipu1/VoCoT/blob/main/raw_data/pretrain/). 
+For datasets that are either introduced, modified, or filtered in this paper, e.g. VoCoT-Instruct, the subset of GRIT and MMC4, we provide the meta data in [here](https://huggingface.co/datasets/luoruipu1/VoCoT/tree/main/pretrain). 
 
 For public datasets like RefCOCO, LLaVA, and ALLaVA, please refer to the corresponding websites to obtain the data. 
 If it is not clear where to obtain the dataset, feel free to contact us.
